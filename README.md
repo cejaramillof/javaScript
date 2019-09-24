@@ -76,3 +76,40 @@ Si una función solo retorna algo, podemos borrar el return y las { llaves }
 ```javascript
     const esMayorEdad = persona => persona.edad >= MAMAYORIA_EDAD
 ```
+   
+### Alcance Funciones (Scopes)
+- Las variables se envian por referencia a scopes descendientes predeterminadamente.
+ 
+**Global Scope** (*var* o *let*) Estando fuera de una función/clase
+```javascript    
+a = 'xd'; // Global Scope (Default Scope)
+
+var b; // Global Scope - Hoisting (Declarar una variable, sin asignarle valor)
+b = 'xd'; 
+
+var c = 'xd'; // Global Scope - Permite Hoisting 
+let c = 'xd'; // Global Scope - No permite Hoisting
+```
+ **Local Scope** (*var* o *let*) Estando dentro de una función/clase
+```javascript
+function foo() {
+    var d = 'lol'; // Local Scope
+    var e = 'lol'; // Local Scope
+}
+```
+  - Se puede tener una variable global y una local con el mismo nombre y diferente valor
+   
+ **block scope** (*let* o *const*) *let* necesita estar dentro de un bloque *(if, while, for, loops, { }, etc)*
+
+    if (true) {
+        let i = 1; // Block Scope
+    }
+    console.log(i); // ReferenceError: i is not defined
+
+    const f = 'constante'; // No permite hoisting
+  - const crea una referencia inmutable, no variables inmutables
+  - las constantes no son reasignables, pero pueden ser mutables. 
+    
+ ### Side Effect (daño colateral)
+ Cuando al ejecutar una función, ella modifica variables que no estan definidas dentro de ella.
+ 
