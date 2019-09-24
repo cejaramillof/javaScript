@@ -97,19 +97,54 @@ function foo() {
     var e = 'lol'; // Local Scope
 }
 ```
-  - Se puede tener una variable global y una local con el mismo nombre y diferente valor
+- Se puede tener una variable global y una local con el mismo nombre y diferente valor
    
  **block scope** (*let* o *const*) *let* necesita estar dentro de un bloque *(if, while, for, loops, { }, etc)*
+```javascript
+if (true) {
+    let i = 1; // Block Scope
+}
+console.log(i); // ReferenceError: i is not defined
 
-    if (true) {
-        let i = 1; // Block Scope
-    }
-    console.log(i); // ReferenceError: i is not defined
-
-    const f = 'constante'; // No permite hoisting
-  - const crea una referencia inmutable, no variables inmutables
-  - las constantes no son reasignables, pero pueden ser mutables. 
+const f = 'constante'; // No permite hoisting
+```
+- const crea una referencia inmutable, no variables inmutables
+- las constantes no son reasignables, pero pueden ser mutables. 
     
  ### Side Effect (daño colateral)
  Cuando al ejecutar una función, ella modifica variables que no estan definidas dentro de ella.
  
+ ## Objetos (JSON)
+ Se declara con { claveKey: 'valorValue' } la clave puede ser un número o un string, el valor  puede ser una función, número, decimal, booleano, string..
+ - Los Objetos que se pasen por parametro, se pasan por referencia (si los modificamos adentro de la función, se va ver afectado el objeto afuera también) - Side Effect
+ 
+```javascript
+var carlos = {
+    nombre: 'Carlos',
+    apellido: 'Jaramillo',
+    edad: 22        
+} 
+    
+function imprimirNombre(persona) {
+    console.log(persona.nombre.toUpperCase());
+}
+imprimirNombre(carlos);
+
+function imprimirNombre({ nombre }) { // Destructuring - solo se usa cuando siempre se envia
+    console.log(nombre.toUpperCase());
+}
+imprimirNombre(carlos);
+imprimirNombre({ nombre: 'Pepito' });
+
+function imprimirNombre(persona) {
+    var { nombre } = persona; // Destructurar Objetos
+    console.log(nombre.toUpperCase());
+}    
+imprimirNombre(carlos);
+
+//Evitar Side Effect
+function cumpleanos(persona) {
+    // Retorna un objeto nuevo con la edad modificada (... Spread Operator) clona un objeto o array
+    return {...persona, edad: persona.edad + 1}
+}
+``` 
