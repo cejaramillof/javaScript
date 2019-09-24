@@ -148,3 +148,17 @@ function cumpleanos(persona) {
     return {...persona, edad: persona.edad + 1}
 }
 ``` 
+## Comparaciones
+Si comparara objetos fallaría porque compararía la posición en memoria.
+#### Valores primitivos:
+- 2 iguales (==) compara convirtiendo ambos valores a string  
+- 3 iguales (===) compara tipo y valor
+
+## Condicionales 
+```javascript
+if (condición) {
+    código a ejecutar, si se cumple la función
+} else {
+    código a ejecutar, cuando no se cumple la función
+}
+```
