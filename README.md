@@ -77,14 +77,27 @@ Si una función solo retorna algo, podemos borrar el return y las { llaves }
     const esMayorEdad = persona => persona.edad >= MAMAYORIA_EDAD
 ```
    
-### Alcance Funciones (Scopes)
+### Alcance Funciones (Scopes) - Hoisting
 - Las variables se envian por referencia a scopes descendientes predeterminadamente.
+
+#### Hoisting
+Declarar una variable, despues de usarla. - Las declaración de las variables declaradas con var, se (suben hasta el comienzo de la ejecución)
+
+Todas las declaraciones (var, let, const, function, function*, class) son "hoisted"
+Pero la diferencia entre las declaraciones
+
+var **/** function **/** function* **(** undefined o generator **)**
+
+y  let **/** const **/** class **(** temporal dead zone **)**
+
+es la inicialización. Las segundas, solo se evaluan cuando son evaludas, mientras estan en una temporal dead zone
+
  
 **Global Scope** (*var* o *let*) Estando fuera de una función/clase
 ```javascript    
 a = 'xd'; // Global Scope (Default Scope)
 
-var b; // Global Scope - Hoisting (Declarar una variable, sin asignarle valor)
+var b; // Global Scope
 b = 'xd'; 
 
 var c = 'xd'; // Global Scope - Permite Hoisting 
@@ -130,22 +143,25 @@ function imprimirNombre(persona) {
 }
 imprimirNombre(carlos);
 
-function imprimirNombre({ nombre }) { // Destructuring - solo se usa cuando siempre se envia
+// Destructuring - solo se usa cuando siempre se envia
+function imprimirNombre({ nombre }) { 
     console.log(nombre.toUpperCase());
 }
 imprimirNombre(carlos);
 imprimirNombre({ nombre: 'Pepito' });
 
 function imprimirNombre(persona) {
-    var { nombre } = persona; // Destructurar Objetos
+    // var nombre = persona.nombre;
+    var { nombre } = persona; // Desestructurar Objetos
     console.log(nombre.toUpperCase());
 }    
 imprimirNombre(carlos);
 
 //Evitar Side Effect
 function cumpleanos(persona) {
-    // Retorna un objeto nuevo con la edad modificada (... Spread Operator) clona un objeto o array
+    // Retorna un objeto nuevo con la edad modificada 
     return {...persona, edad: persona.edad + 1}
+    //(... Spread Operator) clona un objeto o array
 }
 ``` 
 ## Comparaciones
@@ -162,3 +178,6 @@ if (condición) {
     código a ejecutar, cuando no se cumple la función
 }
 ```
+
+## Ciclos
+### for
