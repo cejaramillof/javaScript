@@ -43,9 +43,10 @@ var totalNum = parseFloat(totalStr); // Convertir a número float.
     
 ## Funciones
 Son pedazos de código reutilizables.
+Se le pueden pasar parametros por referencia o valor y son opcionales.
     
 ```javascript
-function nombreFuncion(parametrosRecibidos) { // Los Parametros, son opcionales, porque es weakly typed.
+function nombreFuncion(parametrosRecibidos) {
     // cuerpo función.
     return // Valor retornado por la función
 }
@@ -75,6 +76,17 @@ const esMayorEdad = persona => {
 Si una función solo retorna algo, podemos borrar el return y las { llaves }
 ```javascript
     const esMayorEdad = persona => persona.edad >= MAMAYORIA_EDAD
+```
+### Side Effect (daño colateral)
+Cuando al ejecutar una función, ella modifica variables que no estan definidas dentro de ella.
+
+```javascript
+//Evitar Side Effect
+function cumpleanos(persona) {
+    // Retorna un objeto nuevo con la edad modificada 
+    return {...persona, edad: persona.edad + 1}
+    //(... Spread Operator) clona un objeto o array
+}
 ```
    
 ### Alcance Funciones (Scopes) - Hoisting
@@ -124,10 +136,8 @@ const f = 'constante'; // No permite hoisting
 - const crea una referencia inmutable, no variables inmutables
 - las constantes no son reasignables, pero pueden ser mutables. 
     
- ### Side Effect (daño colateral)
- Cuando al ejecutar una función, ella modifica variables que no estan definidas dentro de ella.
  
- ## Objetos (JSON)
+ ## Objetos (JSON) - Destructuring
  Se declara con { claveKey: 'valorValue' } la clave puede ser un número o un string, el valor  puede ser una función, número, decimal, booleano, string..
  - Los Objetos que se pasen por parametro, se pasan por referencia (si los modificamos adentro de la función, se va ver afectado el objeto afuera también) - Side Effect
  
@@ -156,13 +166,6 @@ function imprimirNombre(persona) {
     console.log(nombre.toUpperCase());
 }    
 imprimirNombre(carlos);
-
-//Evitar Side Effect
-function cumpleanos(persona) {
-    // Retorna un objeto nuevo con la edad modificada 
-    return {...persona, edad: persona.edad + 1}
-    //(... Spread Operator) clona un objeto o array
-}
 ``` 
 ## Comparaciones
 Si comparara objetos fallaría porque compararía la posición en memoria.
