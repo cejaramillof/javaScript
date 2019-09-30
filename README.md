@@ -205,3 +205,18 @@ do {
 } while(persona.peso > Meta)
 // condición
 ```
+
+## Condicional múltiple: Switch
+```javascript
+switch(// var to compare){
+    case 'case2':
+        console.log('execute when case2');
+        break;
+    case 'caso1':
+    case 'casoUno':
+        console.log('execute when case1 or caseUno');
+        break;
+    default:
+        break;
+}
+```
