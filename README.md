@@ -414,3 +414,13 @@ Aquí llegan:
 - interacciones visuales
 - navegación client-side
 - eventos que se realizan cada cierto tiempo.
+
+## Javascript ejecuta primero lo sincrono (pila de tareas), y posteriormente lo asincrono (cola de tareas).
+
+```javascript
+console.log('a');
+// Envía la función a la cola de tareas, mientras sigue ejecutando el programa principal
+setTimeout(() => console.log('b'), 0);
+console.log('c');
+// Cuando termina la ejecución del programa inicial, comienza a ejecutar las tareas de la cola de tareas
+```
