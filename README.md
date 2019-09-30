@@ -282,3 +282,21 @@ const pasarAlturaAcms = persona => ({
     altura: persona.altura * 100
 })
 ```
+
+
+### Reducir un array a un valor
+```javascript
+/*
+var acum = 0
+for (var i = 0; i < personas.length; i++) {
+    acum = acum + personas[i].cantidadDeLibros
+}
+console.log(`En total todos tienen ${acum} libros`)
+*/
+// (una función, y el valor inicial del acumulador)
+
+// acumulador y cada uno de los elementos elementos
+const reducer = (acum, {cantidadDeLibros}) => acum + cantidadDeLibros;
+
+var totalDeLibros = personas.reduce(reducer, 0)
+```
