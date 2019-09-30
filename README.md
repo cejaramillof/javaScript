@@ -197,3 +197,11 @@ while (persona.peso > META) {
     //  código a repetir, mientras se cumpla la condición
 }
 ```
+### Do While
+```javascript
+do {
+    // Minimo se repite 1 vez, antes de verificar la condición
+    // código a repetir, mientras se cumpla la condición
+} while(persona.peso > Meta)
+// condición
+```
