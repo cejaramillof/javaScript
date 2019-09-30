@@ -208,7 +208,7 @@ do {
 
 ## Condicional múltiple: Switch
 ```javascript
-switch(// var to compare){
+switch(// variable a comparar){
     case 'case2':
         console.log('execute when case2');
         break;
@@ -219,4 +219,21 @@ switch(// var to compare){
     default:
         break;
 }
+```
+
+## Arrays o Arreglos
+Estructura de datos, que nos permite agrupar dato, pueden ser números, strings, booleanos, objetos, etc. para realizar ciertas operaciónes sobre esa colección.
+
+```javascript
+// se declara con corchetes
+var personas = [];
+
+var numeros = [1, 2, 3];
+var vocales = ['a', 'e', 'i', 'o', 'u'];
+
+// para acceder a una posición
+vocales[1];
+
+personas[0].altura;
+personas[0]['altura'];
 ```
