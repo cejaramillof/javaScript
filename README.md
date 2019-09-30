@@ -238,7 +238,7 @@ personas[0].altura;
 personas[0]['altura'];
 ```
 
-### Filtrar elementos en un array
+### Filtrar elementos en un array (filter)
 ```javascript
 const numeroPar = numero => numero % 2 === 0;
 
@@ -251,4 +251,34 @@ var numerosFiltrados = numeros.filter(function (numero) {
     return numero % 2 === 0;
 });
 
+```
+
+### Transformar un array (map)
+Itera sobre los elementos de un array, en el orden de inserción y retorna un array nuevo con los elementos modificados.
+```javascript
+
+const multiplicarPorDos = numero => numero * 2;
+var numerosMultiplicados = numeros.map(multiplicarPorDos)
+
+// también puede ser llamado con una función anonima
+var numerosMultiplicados = numeros.map(function (numero) {
+    return numero => numero * 2;
+});
+
+const pasarAlturaAcms = persona => {
+    // personal.altura *= 100;
+    // return persona;
+
+    // retornar nuevo objeto, para no modificar la persona inicial
+    return {
+        ...persona,
+        altura: persona.altura * 100
+    }
+}
+
+// para retornar simplemente un objeto
+const pasarAlturaAcms = persona => ({
+    ...persona,
+    altura: persona.altura * 100
+})
 ```
