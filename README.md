@@ -345,3 +345,38 @@ Desarrollador.prototype.saludar = function () {
 }
 
 ```
+
+### Clases (ECMA 2015)
+```javascript
+class Persona {
+    constructor(nombre, apellido, altura) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.altura = altura;
+    }
+
+    saludar() {
+        console.log(`Hola, Me llamo ${this.nombre}`);
+    }
+
+    soyAlto() {
+        return this.altura > 1.8;
+    }
+}
+
+class Desarrollador extends Persona {
+    constructor(nombre, apellido, altura) {
+        // llamar constructor clase padre (necesario para usar this)
+        super(nombre, apellido, altura);
+        /*
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.altura = altura;
+        */
+    }
+    
+    saludar() {
+        console.log(`Hola, me llamo ${this.nombre} y soy dev!`);
+    }
+}
+```
