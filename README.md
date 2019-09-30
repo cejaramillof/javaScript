@@ -306,6 +306,8 @@ var totalDeLibros = personas.reduce(reducer, 0)
 
 
 ## Prototipos (clases)
+Javascript no soporta la herencia, porque no existen las clases. Existen los prototipos que son objetos que le vamos agregando metodos, que reciben funciones.
+
 ```javascript
 function Persona(nombre, apellido, altura) {
     this.nombre = nombre;
@@ -320,6 +322,26 @@ Persona.prototype.saludar = function() {
 }
 
 var carlos = new Persona('Carlos', 'Jaramillo', 1.72)
+```
 
+### Herencia prototipal
+Busca un metodo en si, si no lo encuentra lo busca en el prototipo padre, y así hacia arriba, hasta llegar al potrotipo base de todos los prototipos (obj) si no lo encuentra, aquí lanza el error.
+```javascript
+function Desarrollador(nombre, apellido) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+}
+
+// Herencia antes de ECMA 2015
+function heredaDe(prototipoHijo, prototipoPadre) {
+    var fn = function () {}
+    fn.prototype = prototipopadre.prototype;
+    prototipoHijo.prototype = new fn;
+    prototipoHijo.prototype.constructor = prototipoHijo;
+}
+
+Desarrollador.prototype.saludar = function () {
+    console.log(`Hola, me llamo ${this.nombre} y soy dev.`)
+}
 
 ```
