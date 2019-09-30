@@ -181,11 +181,19 @@ if (condición) {
 }
 ```
 
-## Ciclos
-### for
+## Ciclos (Estructuras repetitivas)
+### For
 ```javascript
 /* inicial; condición; incremento */
 for (var i = 1; i <= 365; i++) {
     // código a repetir
+}
+```
+
+### While
+```javascript
+// condición
+while (persona.peso > META) {
+    //  código a repetir, mientras se cumpla la condición
 }
 ```
