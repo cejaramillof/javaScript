@@ -424,3 +424,21 @@ setTimeout(() => console.log('b'), 0);
 console.log('c');
 // Cuando termina la ejecución del programa inicial, comienza a ejecutar las tareas de la cola de tareas
 ```
+
+## Callbacks
+Un callback es una función que se pasa a otra función como un argumento. Esta función se invoca, después, dentro de la función externa para completar alguna acción.
+
+```javascript
+const URL = 'https://swapi.co/api';
+const PEOPLE_URL = '/people/:id';
+
+const LUKE_URL = `${URL}${PEOPLE_URL.replace(':id',1)}`;
+
+fetch(LUKE_URL)
+.then((response)=>response.json())
+.then((persona)=>{
+    console.log(`Hola yo soy ${persona.name}`)
+})
+.catch( error=> console.error('Error: ', error))
+
+```
