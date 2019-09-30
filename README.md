@@ -3,8 +3,7 @@
 JS es debilmente tipado. (weakly typed)
 
 ```javascript
-var mayoriaEdad = 18 // Magic Number
-const MAYORIA_EDAD // constante
+const MAYORIA_EDAD = 18 // constante - Magic Number
 ```
 
 ### Strings
@@ -184,3 +183,9 @@ if (condición) {
 
 ## Ciclos
 ### for
+```javascript
+/* inicial; condición; incremento */
+for (var i = 1; i <= 365; i++) {
+    // código a repetir
+}
+```
