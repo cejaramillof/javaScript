@@ -355,8 +355,14 @@ class Persona {
         this.altura = altura;
     }
 
-    saludar() {
-        console.log(`Hola, Me llamo ${this.nombre}`);
+    saludar(fn) {
+        // var nombre = this.nombre;
+        // var apellido = this.apellido;
+        var {nombre, apellido} = this;
+        console.log(`Hola, Me llamo ${nombre}`);
+        if (fn) {
+            fn(nombre, apellido, null)
+        }
     }
 
     soyAlto() {
@@ -375,8 +381,36 @@ class Desarrollador extends Persona {
         */
     }
     
-    saludar() {
-        console.log(`Hola, me llamo ${this.nombre} y soy dev!`);
+    saludar(fn) {
+        var {nombre, apellido} = this;
+        console.log(`Hola, me llamo ${nombre} y soy dev!`);            
+        if (fn) {
+            fn(nombre, apellido, true)
+        }
     }
 }
 ```
+## Enviar función como parametro
+```javascript
+function responderSaludo(nombre, apellido, esEstudiante){
+  console.log(`buenas tardes ${nombre}${apellido}`)
+  if(esEstudiante){
+    console.log(`Ah, no sabie que eres estudiante.`)
+  }
+}
+
+carlos.saludar(responderSaludo);
+```
+
+## Asincronismo
+JavaScript sólo puede hacer una tarea a la vez (No es multi-tarea), sin embargo; es capaz de delegar la ejecución de ciertas funciones a otros procesos. Este modelo de concurrencia se llama **EventLoop**.
+
+**Pila de ejecución** o **Call Stack**, se ponen las llamadas a funciones según el orden de ejecución del programa (se saca de la pila al terminar de ejecutar cada función)
+
+**Callback**, una función que se ejecutará cuando regrese la respuesta del servidor.
+Javascript sigue ejecutando el programa principal, y cuando llegue la respuesta la funcion a ejecutar va a parar a la **cola de tareas** (se encolan, segun orden de llegada) 
+Aquí llegan: 
+- las peticiones a servidores
+- interacciones visuales
+- navegación client-side
+- eventos que se realizan cada cierto tiempo.
