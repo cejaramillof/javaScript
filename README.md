@@ -437,8 +437,46 @@ const LUKE_URL = `${URL}${PEOPLE_URL.replace(':id',1)}`;
 fetch(LUKE_URL)
 .then((response)=>response.json())
 .then((persona)=>{
-    console.log(`Hola yo soy ${persona.name}`)
+    console.log(`Hola, yo soy ${persona.name}`)
 })
 .catch( error=> console.error('Error: ', error))
+
+```
+
+
+## Multiples request
+Las respuestas en js no nos llegan en el mismo orden, por el asincronismo. A no ser que usemos callbacks
+
+```javascript
+const URL = 'https://swapi.co/api';
+const PEOPLE_URL = '/people/:id';
+
+const getPersona = (personaId, callback) => {
+    const LUKE_URL = `${URL}${PEOPLE_URL.replace(':id',personaId)}`;
+    fetch(LUKE_URL)
+    .then((response)=>response.json())
+    .then((persona)=>{
+        console.log(`Hola, yo soy ${persona.name}`)
+        if (callback) {
+            callback();
+        }
+    })
+    .catch( error=> console.error('Error: ', error))  // manejo de error en callback
+};
+
+/*
+// No llegan en el mismo orden 
+
+getPersona(1);
+getPersona(2);
+getPersona(3);
+*/
+
+// Callback Hell
+getPersona(1, function () {
+    getPersona(2, function () {
+        getPersona(3);
+    });
+});
 
 ```
