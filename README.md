@@ -238,6 +238,9 @@ personas[0].altura;
 personas[0]['altura'];
 ```
 
+### Principales metodos de una array:
+[Click aquí](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array)
+
 ### Filtrar elementos en un array (filter)
 ```javascript
 const numeroPar = numero => numero % 2 === 0;
@@ -299,4 +302,24 @@ console.log(`En total todos tienen ${acum} libros`)
 const reducer = (acum, {cantidadDeLibros}) => acum + cantidadDeLibros;
 
 var totalDeLibros = personas.reduce(reducer, 0)
+```
+
+
+## Prototipos (clases)
+```javascript
+function Persona(nombre, apellido, altura) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.altura = altura;
+    // return this; - está implicito.
+}
+// siempre en la parte superior, porque si se ejecutan antes de ser declaradas no existen.
+// no pueden ser arrow functions, porque dentro de una arrow function this, this hace referencia a su padre.
+Persona.prototype.saludar = function() {
+    console.log(`Hola, Me llamo ${this.nombre}`);
+}
+
+var carlos = new Persona('Carlos', 'Jaramillo', 1.72)
+
+
 ```
