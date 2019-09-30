@@ -228,7 +228,7 @@ Estructura de datos, que nos permite agrupar dato, pueden ser números, strings,
 // se declara con corchetes
 var personas = [];
 
-var numeros = [1, 2, 3];
+var numeros = [1, 2, 3, 4];
 var vocales = ['a', 'e', 'i', 'o', 'u'];
 
 // para acceder a una posición
@@ -236,4 +236,19 @@ vocales[1];
 
 personas[0].altura;
 personas[0]['altura'];
+```
+
+### Filtrar elementos en un array
+```javascript
+const numeroPar = numero => numero % 2 === 0;
+
+// la condición en filter debe ser una función
+var numerosFiltrados = numeros.filter(numeroPar);
+// retorna un nuevo array
+
+// con función anonima
+var numerosFiltrados = numeros.filter(function (numero) {
+    return numero % 2 === 0;
+});
+
 ```
