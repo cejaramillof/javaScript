@@ -555,3 +555,21 @@ Promise
     .then(personajes => console.log(personajes))
     .catch(`Error`);
 ```
+
+
+## Async-await
+Se marca la función al inicio como **async**, se pone la parte asincrona en un try-catch y se le marca como await
+```javascript
+async function obtenerPersonajes() {
+    var ids = [1, 2, 3, 4, 5, 6,7];
+    var promesas = ids.map(id => getPersona(id));
+    try {
+        var personajes = await Promise.all(promesas);
+        console.log(personajes)
+    } catch (id) {
+        console.log(`error in ${id}`);
+    }
+}
+
+obtenerPersonajes();
+```
