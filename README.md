@@ -480,3 +480,78 @@ getPersona(1, function () {
 });
 
 ```
+
+## Promesas
+Anteriormente usabamos bluebird cuando no todos los browsers tenian soporte, ahora se pueden usar polyfills para browsers que no tengan esta clase creada aun.
+
+Son valores que aun no conocemos, la promesa de que ahí habrá un valor cuando una acción asincrona/sincrona suceda y se resuelva. Son un obj de JS
+
+```javascript
+new Promise(function(resolve, reject){
+
+}).then(valor => {
+    // aquí se puede retornar otra promesa, para ir encadenandolas en acciones sucesivas asincronas
+}).catch(err => {
+
+});
+```
+#### Estados:
+- Pending (Cuando se crea, inicializa)
+- Fullfilled (resolve) (Cuando se resuelve, exitosamente)
+```javascript
+ .then(val => ..) // recibe una función
+```
+- Rejected (Error)
+```javascript
+.catch(err => ..)  // recibe una función
+```
+
+```javascript
+const URL = 'https://swapi.co/api';
+const PEOPLE_URL = '/people/:id';
+
+const HEADERS = new Headers();
+var miInit = { method: 'GET',
+  headers: HEADERS,
+   mode: 'cors',
+  cache: 'default'
+};
+
+const getPersona = (personaId) => {
+    const LUKE_URL = `${URL}${PEOPLE_URL.replace(':id',personaId)}`;
+    // function(resolve, reject)
+    return fetch(LUKE_URL, miInit)
+        .then(response => response.json())
+        .catch(error => console.log(`Error al obtener el personaje ${id}`)) 
+};
+```
+### Promesas encadenadas
+A diferencia de los callbacks que son anidados, las promesas son encadenadas.
+
+```javascript
+getPersona(1)
+    .then(persona => {
+        console.log(`Hola, yo soy ${persona.name}`)
+        return getPersona(2)
+    })
+    .then(persona => {
+        console.log(`Hola, yo soy ${persona.name}`)
+        return getPersona(3)
+    })
+    .then(persona => {
+        console.log(`Hola, yo soy ${persona.name}`)
+    })
+    .catch(`Error`);
+```
+
+### Multiples promesas en paralelo
+
+```javascript
+var ids = [1, 2, 3, 4, 5, 6,7];
+var promesas = ids.map(id => getPersona(id));
+
+Promise
+    .all(promesas)
+    .then(personajes => console.log(personajes))
+    .catch(`Error`);
+```
