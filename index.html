@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>MediaPlayer.js</title>
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>MediPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+    <main class="container">
+      <video class="movie">
+        <source src="./assets/BigBuckBunny.mp4" />
+      </video>
+
+      <button>Play/Pause</button>
+    </main>
+
+    <script>
+      
+      const video = document.querySelector('video');
+      const button = document.querySelector('button');
+
+      /*
+      // Funciona, pero no es muy extensible
+      button.onclick = () => video.play();
+      // Por eso desarrollamos una clase (obj en js) MediaPlayer
+      */
+
+      function MediaPlayer(config) {
+        this.media = config.el;
+      }
+
+      MediaPlayer.prototype.play = function() {
+        this.media.play();
+      };
+
+      MediaPlayer.prototype.pause = function() {
+        this.media.pause();
+      };
+
+      /*
+      MediaPlayer.prototype.togglePlay = function() {
+        if (this.media.paused) {
+          this.play();
+        } else {
+          this.pause();
+        }
+      };
+
+      button.onclick = () => player.togglePlay();
+      */
+
+      const player = new MediaPlayer({ el: video });
+
+
+      button.onclick = () => {
+        player.media.paused? player.play() : player.pause()
+      }
+      
+    </script>
+  </body>
+</html>
