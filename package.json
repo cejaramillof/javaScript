@@ -1,0 +1,20 @@
+{
+  "name": "javaScript",
+  "version": "1.0.0",
+  "description": "JS es debilmente tipado. (weakly typed)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotCarlos/javaScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dotCarlos/javaScript/issues"
+  },
+  "homepage": "https://github.com/dotCarlos/javaScript#readme"
+}
