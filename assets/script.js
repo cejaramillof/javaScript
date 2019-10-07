@@ -1,18 +1,24 @@
 import MediaPlayer from './mediaPlayer.js';
+import AutoPlay from './plugins/autoPlay.js';
 
 const video = document.querySelector('video');
-const button = document.querySelector('button');
+const playButton = document.querySelector('#btn-video-play');
+const muteButton = document.querySelector('#btn-video-mute');
 
-const player = new MediaPlayer({ el: video });
+const player = new MediaPlayer({ el: video, plugins: [
+    new AutoPlay()
+] });
 
 /*
 // Funciona, pero no es muy extensible
-button.onclick = () => video.play();
+playButton.onclick = () => video.play();
 // Por eso desarrollamos una clase (obj en js) MediaPlayer
 
-button.onclick = () => player.togglePlay();
+playButton.onclick = () => player.togglePlay();
 */
 
-button.onclick = () => {
+playButton.onclick = () => {
     player.media.paused? player.play() : player.pause()
 }
+
+muteButton.onclick = () => player.toggleMute();
