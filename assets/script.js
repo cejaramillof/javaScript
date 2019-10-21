@@ -1,5 +1,6 @@
 import MediaPlayer from './mediaPlayer.js';
 import AutoPlay from './plugins/autoPlay.js';
+import AutoPause from './plugins/autoPause.js'
 
 const video = document.querySelector('video');
 const playButton = document.querySelector('#btn-video-play');
@@ -7,7 +8,7 @@ const muteButton = document.querySelector('#btn-video-mute');
 
 const player = new MediaPlayer({ 
     el: video, 
-    plugins: [ new AutoPlay() ] 
+    plugins: [ new AutoPlay(), new AutoPause() ] 
 });
 
 /*
