@@ -5,9 +5,10 @@ const video = document.querySelector('video');
 const playButton = document.querySelector('#btn-video-play');
 const muteButton = document.querySelector('#btn-video-mute');
 
-const player = new MediaPlayer({ el: video, plugins: [
-    new AutoPlay()
-] });
+const player = new MediaPlayer({ 
+    el: video, 
+    plugins: [ new AutoPlay() ] 
+});
 
 /*
 // Funciona, pero no es muy extensible
