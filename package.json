@@ -7,7 +7,8 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "start": "live-server",
+    "start-l": "live-server",
+    "start": "parcel index.html *.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,11 @@
   },
   "homepage": "https://github.com/dotCarlos/javaScript#readme",
   "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+    "live-server": "^1.2.1",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.6.4"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }
