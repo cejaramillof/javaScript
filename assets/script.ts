@@ -22,7 +22,7 @@ playButton.onclick = () => player.togglePlay();
 
 playButton.onclick = () => {
     player.media.paused? player.play() : player.pause()
-}
+};
 
 muteButton.onclick = () => player.toggleMute();
 
