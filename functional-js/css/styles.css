@@ -1,0 +1,154 @@
+:root {
+    --background: #e9ecef;
+    --border: #dee2e6;
+    --black: rgb(50, 50, 50);
+    --invalid: red;
+    --button-default: gainsboro;
+    --remove-hover: red;
+    --ok: dodgerblue;
+    --edit:limegreen ;
+    --button: dodgerblue;
+    --button-hover: rgb(28, 125, 221);
+}
+
+body, h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--black);
+}
+
+.container {
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 100px;
+    overflow: hidden;
+    max-width: 960px;
+    border: 1px solid var(--border);
+}
+
+#header {
+    text-align: center;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem;
+}
+
+[class*=-container] {
+    padding: 2rem;
+}
+
+table {
+    text-align: center;
+    width: 100%;
+}
+
+table, th, td {
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-collapse: collapse;
+    padding: 0.75rem
+}
+
+#total {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--background);
+    border-spacing: 1rem;
+}
+
+.form-container {
+    background-color: var(--background);
+    border-top: 1px solid var(--border);
+}
+
+.form-container form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input {
+    border: var(--border);
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    margin: 0.25rem;
+    height: 2em;
+    transition: 0.3s;
+}
+
+table input {
+    width: 100px;
+    text-align: center;
+    color: var(--black);
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    background: transparent;
+}
+
+table input.enabled {
+    background: white;
+    /* box-shadow: 0 2px 5px var(--edit); */
+    -webkit-appearance: scrollbartrack-vertical;
+    -moz-appearance: scrollbartrack-vertical ;
+}
+
+.form-container div input:focus  {
+    box-shadow: 0 0 10px var(--ok);
+}
+
+.form-container div input:invalid, 
+.form-container div input.is-invalid, 
+table input.is-invalid  {
+    box-shadow: 0 0 10px var(--invalid);
+}
+
+button {
+    margin: 0.25rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    transform: scale(1.2);
+}
+
+button:active{
+    transform: scale(0.8);
+}
+
+button.add {
+    background-color: var(--button);
+}
+
+button.remove::before{
+    content: "X";
+}
+
+button.remove {
+    background-color: var(--button-default);
+}
+
+button.remove:hover {
+    background-color: var(--remove-hover);
+}
+
+button.edit::before{
+    content: "MOD";
+}
+
+button.edit {
+    width: max-content;
+    background-color: var(--button-default);
+}
+
+button.edit:hover {
+    background-color: var(--edit);
+}
